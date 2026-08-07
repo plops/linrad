@@ -26,7 +26,7 @@
 ## process this file with CMake to produce Makefile
 
 # Support for NASM is available only with CMake 2.8.8 or later.
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.5)
 project (linrad)
 
 # Read file vernr.h and extract the parts of the version number.
@@ -44,7 +44,9 @@ include(CheckPrototypeDefinition)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 # Set build type. We do this only to prevent compile flag -O3.
 set(CMAKE_BUILD_TYPE Debug)
+add_definitions(-D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=0)
 
+include_directories(${CMAKE_SOURCE_DIR})
 # Create empty file conf.h to be included by the .c sources.
 file(WRITE ${CMAKE_SOURCE_DIR}/conf.h  "/* empty file, all settings defined by CMake. */\n" )
 
@@ -243,15 +245,15 @@ if (
     set(CMAKE_ASM_NASM_SOURCE_FILE_EXTENSIONS s)
     if (${IA64} STREQUAL 0)
       if (MINGW)
-        set(CMAKE_ASM_NASM_OBJECT_FORMAT "win32 -w-orphan-labels -D OS_WINDOWS")
+        set(CMAKE_ASM_NASM_OBJECT_FORMAT "win32 -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -D OS_WINDOWS")
       else()
-        set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf   -w-orphan-labels -D OS_LINUX ")
+        set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf   -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -D OS_LINUX ")
       endif()
     else()
       if (MINGW)
-        set(CMAKE_ASM_NASM_OBJECT_FORMAT "win64 -w-orphan-labels -D OS_WINDOWS ")
+        set(CMAKE_ASM_NASM_OBJECT_FORMAT "win64 -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -D OS_WINDOWS ")
       else()
-        set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf64 -w-orphan-labels -D OS_LINUX ")
+        set(CMAKE_ASM_NASM_OBJECT_FORMAT "elf64 -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -D OS_LINUX ")
       endif()
     endif()
     enable_language(ASM_NASM)
@@ -647,4 +649,8 @@ else()
   endif()
 endif()
 
-
+# Enable automated testing support
+enable_testing()
+add_executable (test_runner tests/test_runner.c tests/test_stubs.c tests/test_llsq.c tests/test_vernr.c tests/test_palette.c llsq.c llsqvar.c palette.c)
+target_link_libraries (test_runner m)
+add_test(NAME LinradUnitTests COMMAND test_runner)

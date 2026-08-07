@@ -39,6 +39,10 @@
 #if !defined( SEMAPHORE_H )
 #define SEMAPHORE_H
 
+#if !defined(_WIN32) && !defined(__MINGW32__) && !defined(WIN32) && defined(__GNUC__)
+#include_next <semaphore.h>
+#else
+
 #undef PTW32_LEVEL
 
 #if defined(_POSIX_SOURCE)
@@ -163,4 +167,5 @@ PTW32_DLLPORT int __cdecl sem_getvalue (sem_t * sem,
 #undef PTW32_LEVEL
 #undef PTW32_LEVEL_MAX
 
+#endif /* !POSIX */
 #endif				/* !SEMAPHORE_H */
