@@ -39,6 +39,10 @@
 #if !defined( SEMAPHORE_H )
 #define SEMAPHORE_H
 
+/* On non-Windows POSIX platforms, Linrad's build uses -I. (or
+ * include_directories in CMake), which causes this file to shadow the
+ * system <semaphore.h>. Delegate to the real system header via
+ * #include_next (supported by GCC and Clang). */
 #if !defined(_WIN32) && !defined(__MINGW32__) && !defined(WIN32) && defined(__GNUC__)
 #include_next <semaphore.h>
 #else

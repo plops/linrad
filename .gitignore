@@ -1,0 +1,34 @@
+# Editor backup and swap files
+*~
+*.swp
+*.swo
+\#*\#
+.*.swp
+
+# Build artifacts
+build/
+*.o
+*.om
+*.ow
+*.ol
+*.oa
+*.obj
+test_runner
+xlinrad
+xlinrad64
+clinrad
+wlinrad.exe
+wlinrad64.exe
+conf.h
+
+# Autoconf generated
+Makefile
+config.log
+config.status
+autom4te.cache/
+
+# Configure-generated files
+ft245.c
+libfind1
+libfind2
+x.x

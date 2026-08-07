@@ -12,12 +12,14 @@ make test
 
 echo "[3/4] Configuring CMake build directory..."
 mkdir -p build
-cd build
-cmake ..
 
 echo "[4/4] Building clinrad and running CTest suite..."
-make test_runner clinrad
-ctest --output-on-failure
+(
+  cd build
+  cmake ..
+  make test_runner clinrad
+  ctest --output-on-failure
+)
 
 echo ""
 echo "=== ALL BUILD AND TEST VERIFICATION STAGES PASSED ==="

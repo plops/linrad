@@ -26,7 +26,7 @@
 ## process this file with CMake to produce Makefile
 
 # Support for NASM is available only with CMake 2.8.8 or later.
-cmake_minimum_required (VERSION 3.5)
+cmake_minimum_required (VERSION 3.10)
 project (linrad)
 
 # Read file vernr.h and extract the parts of the version number.
@@ -46,6 +46,10 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_BUILD_TYPE Debug)
 add_definitions(-D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=0)
 
+# NOTE: Adding the source root as an include path is required because Linrad's
+# .c files use #include "globdef.h" etc. for headers in the project root.
+# This causes semaphore.h to shadow the system POSIX header; the workaround
+# is the #include_next guard in semaphore.h.
 include_directories(${CMAKE_SOURCE_DIR})
 # Create empty file conf.h to be included by the .c sources.
 file(WRITE ${CMAKE_SOURCE_DIR}/conf.h  "/* empty file, all settings defined by CMake. */\n" )
@@ -652,5 +656,6 @@ endif()
 # Enable automated testing support
 enable_testing()
 add_executable (test_runner tests/test_runner.c tests/test_stubs.c tests/test_llsq.c tests/test_vernr.c tests/test_palette.c llsq.c llsqvar.c palette.c)
+target_include_directories(test_runner PRIVATE ${CMAKE_SOURCE_DIR})
 target_link_libraries (test_runner m)
 add_test(NAME LinradUnitTests COMMAND test_runner)
