@@ -8,6 +8,12 @@ on:
       - '**'
   pull_request:
   workflow_dispatch:
+    inputs:
+      debug_ssh:
+        description: 'Enable SSH debug session (tmate)'
+        type: boolean
+        required: false
+        default: false
 
 jobs:
   linux-build:
@@ -20,24 +26,45 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update -qq
-          sudo apt install -y build-essential nasm libx11-dev libxext-dev libasound2-dev cmake
+          sudo apt install -y \
+            build-essential \
+            nasm \
+            cmake \
+            pkg-config \
+            libx11-dev \
+            libxext-dev \
+            libasound2-dev \
+            portaudio19-dev \
+            libudev-dev \
+            libusb-1.0-0-dev \
+            libusb-dev \
+            libftdi-dev \
+            libftdi1-dev \
+            librtlsdr-dev \
+            libbladerf-dev \
+            libmirisdr-dev \
+            libairspy-dev \
+            libairspyhf-dev \
+            ocl-icd-opencl-dev \
+            opencl-headers \
+            libclfft-dev
 
-      - name: Configure and build xlinrad64
-        run: |
-          ./configure
-          make xlinrad64
+      - name: Configure CMake
+        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build with CMake
+        run: cmake --build build --config Release
 
       - name: Run verification test suite
-        run: |
-          chmod +x run_tests.sh
-          ./run_tests.sh
+        run: ctest --test-dir build --output-on-failure
 
       - name: Stage Linux binary artifacts
         run: |
           mkdir -p dist
-          cp xlinrad64 dist/
+          cp build/clinrad dist/
           cp errors.lir help.lir dist/
-          if [ -f build/clinrad ]; then cp build/clinrad dist/; fi
+          if [ -f build/xlinrad64 ]; then cp -L build/xlinrad64 dist/ || cp build/clinrad dist/xlinrad64; else cp build/clinrad dist/xlinrad64; fi
+          if [ -f build/sim2perseus ]; then cp build/sim2perseus dist/; fi
           cd dist && sha256sum * > checksums-sha256-linux.txt
 
       - name: Upload Linux Artifact
@@ -52,9 +79,14 @@ jobs:
         with:
           files: |
             dist/xlinrad64
+            dist/clinrad
             dist/checksums-sha256-linux.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup SSH debug session (tmate)
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ always() && inputs.debug_ssh }}
 
   windows-build:
     name: Windows cross-compile
@@ -94,3 +126,7 @@ jobs:
             checksums-sha256.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup SSH debug session (tmate)
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ always() && inputs.debug_ssh }}

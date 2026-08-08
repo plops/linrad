@@ -555,6 +555,14 @@ add_executable (clinrad ${LINRAD_SOURCES})
 target_link_libraries (clinrad m ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS} ${EXTRA_LIBS})
 install(PROGRAMS ${CMAKE_BINARY_DIR}/clinrad${CMAKE_EXECUTABLE_SUFFIX} DESTINATION linrad)
 
+if (UNIX AND NOT APPLE)
+  add_custom_target(xlinrad64 ALL
+    COMMAND ${CMAKE_COMMAND} -E create_symlink clinrad ${CMAKE_CURRENT_BINARY_DIR}/xlinrad64
+    DEPENDS clinrad
+    COMMENT "Creating xlinrad64 symlink to clinrad"
+  )
+endif()
+
 if (NOT MSVC)
   add_executable (sim2perseus sim2perseus.c)
   target_link_libraries (sim2perseus)
