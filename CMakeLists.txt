@@ -247,6 +247,7 @@ if (
   if(CMAKE_ASM_NASM_COMPILER)
     set (CPU "CPU_INTEL")
     set(CMAKE_ASM_NASM_SOURCE_FILE_EXTENSIONS s)
+    set(CMAKE_ASM_NASM_FLAGS "${CMAKE_ASM_NASM_FLAGS} -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword")
     if (${IA64} STREQUAL 0)
       if (MINGW)
         set(CMAKE_ASM_NASM_OBJECT_FORMAT "win32 -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword -D OS_WINDOWS")
