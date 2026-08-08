@@ -20,6 +20,7 @@
 ; FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE 
 ; OR OTHER DEALINGS IN THE SOFTWARE.
 section .note.GNU-stack
+default rel
 
 extern lir_sched_yield
 global asmbulk_of_dual_dif
