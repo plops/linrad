@@ -73,7 +73,7 @@ L$1:
   cmp    dword [TMP11+esp],0
   jz     LNY1
   push   rbp
-  call   lir_sched_yield wrt ..plt
+  call   lir_sched_yield
   pop    rbp
 LNY1:
   mov    eax,[TMP5+esp]
@@ -201,7 +201,7 @@ M$1:
   cmp    dword [TMP11+esp],0
   jz     MNY1
   push   rbp
-  call   lir_sched_yield wrt ..plt
+  call   lir_sched_yield
   pop    rbp
 MNY1:
   mov    eax,[TMP5+esp]

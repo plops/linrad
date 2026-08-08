@@ -934,7 +934,7 @@ loop1:
   push   rbp
   push   rsi
   push   rdi
-  call   lir_sched_yield wrt ..plt
+  call   lir_sched_yield
   pop    rdi
   pop    rsi
   pop    rbp
