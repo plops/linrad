@@ -38,7 +38,7 @@ global _fft2_mmx_c1
 %define INCC ebp-24
 section .text
 
-_fft2_mmx_c1
+_fft2_mmx_c1:
   push    rbx
   push    rcx
   push    rdx
@@ -282,7 +282,7 @@ zz:
   pop  rbx
   ret
 
-_fft2_mmx_c2
+_fft2_mmx_c2:
   push    rbx
   push    rcx
   push    rdx

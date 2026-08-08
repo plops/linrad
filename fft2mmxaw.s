@@ -46,7 +46,7 @@ global _fft2mmx_a1_win
 section .text
 
 
-_fft2mmx_a1_win
+_fft2mmx_a1_win:
   push    ebx
   push    ecx
   push    edx
@@ -218,7 +218,7 @@ win_one:
   pop  ebx
   ret
 
-_fft2mmx_a1_nowin
+_fft2mmx_a1_nowin:
   push    ebx
   push    ecx
   push    edx
@@ -344,7 +344,7 @@ nowin_one:
   ret
 
 
-_fft2mmx_a2_nowin
+_fft2mmx_a2_nowin:
   push    ebx
   push    ecx
   push    edx
@@ -537,7 +537,7 @@ nowin_two:
   pop  ebx
   ret
 
-_fft2mmx_a2_win
+_fft2mmx_a2_win:
   push    ebx
   push    ecx
   push    edx

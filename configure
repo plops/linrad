@@ -1969,7 +1969,7 @@ else
     /usr/local32/lib /emul/ia32-linux/lib /emul/ia32-linux/usr/lib /usr/X11/lib \
     /usr/PCBSD/local/lib /usr/lib/i386-linux-gnu /usr/lib/x86_64-linux-gnu \
     /usr/X11R6/lib /opt/local/lib /usr/lib/arm-linux-gnueabihf \
-    /usr/local/lib64
+    /usr/local/lib64 2>/dev/null || true
   fi
   ELF64="-felf64"
   LIBEXT="so"
@@ -2221,26 +2221,26 @@ else
 fi
 if test "$LIBEXT" = "dylib"; then
   ELF32=""
-  nasm -w-orphan-labels -felf -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
+  nasm -w-orphan-labels -w-label-orphan -felf -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
   chmod 777 x.x
   Y=`cat x.x`
   if test "$Y" = ""; then
     ELF32=-felf
   fi
-  nasm -w-orphan-labels -fmacho -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
+  nasm -w-orphan-labels -w-label-orphan -fmacho -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
   chmod 777 x.x
   Y=`cat x.x`
   if test "$Y" = ""; then
     ELF32=-fmacho
   fi
-  nasm -w-orphan-labels -fmacho32 -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
+  nasm -w-orphan-labels -w-label-orphan -fmacho32 -s -D OS_WINDOWS getiq.s -o getiq.ol 2> x.x
   chmod 777 x.x
   Y=`cat x.x`
   if test "$Y" = ""; then
     ELF32=-fmacho32
   fi
   ELF64=""
-  nasm -w-orphan-labels -fmacho64 -s -D OS_WINDOWS getiq64.s -o getiq64.om 2> x.x
+  nasm -w-orphan-labels -w-label-orphan -fmacho64 -s -D OS_WINDOWS getiq64.s -o getiq64.om 2> x.x
   chmod 777 x.x
   Y=`cat x.x`
   if test "$Y" = ""; then
@@ -4738,7 +4738,7 @@ if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
 fi
 
         if test "$CLFFT64_INC" != ""; then
-          ldconfig $(realpath ./)/build/extlibs/
+          ldconfig $(realpath ./)/build/extlibs/ 2>/dev/null || true
           CLFFT64_OK="1"
         fi
       fi
@@ -4793,7 +4793,7 @@ if eval test \"x\$"$as_ac_File"\" = x"yes"; then :
 fi
 
         if test "$CLFFT32_INC" != ""; then
-          ldconfig $(realpath ./)/build/extlibs/
+          ldconfig $(realpath ./)/build/extlibs/ 2>/dev/null || true
           CLFFT32_OK="1"
         fi
       fi

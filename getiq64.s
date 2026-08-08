@@ -36,7 +36,7 @@ global expand_rawdat
 
 section .text
 
-compress_rawdat_net
+compress_rawdat_net:
   push rbx
   push rcx
   push rdx
@@ -95,7 +95,7 @@ cmpr_d:
   pop  rbx
   ret
 
-compress_rawdat_disk
+compress_rawdat_disk:
   push rbx
   push rcx
   push rdx
@@ -155,7 +155,7 @@ cmpr_n:
   ret
 
 
-expand_rawdat
+expand_rawdat:
   push rbx
   push rcx
   push rdx

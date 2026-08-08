@@ -38,7 +38,7 @@ TMP10 equ 32
 TMP11 equ 36
 section .text 
 
-_asmbulk_of_dual_dif
+_asmbulk_of_dual_dif:
   push   ebp
   mov    ebp,esp  
   push   edi
@@ -166,7 +166,7 @@ L$3:                               ;st0 st1 st2 st3 st4 st5 st6 st7
 ;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-_asmbulk_of_dif
+_asmbulk_of_dif:
   push   ebp
   mov    ebp,esp  
   push   edi

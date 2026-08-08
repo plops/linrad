@@ -52,7 +52,7 @@ global _fft2_mmx_b2low
 %define J ebp-40
 section .text
 
-_fft2_mmx_b2hi
+_fft2_mmx_b2hi:
   push    rbx
   push    rcx
   push    rdx
@@ -331,7 +331,7 @@ dlp1hi:;
 
 
 
-_fft2_mmx_b1hi
+_fft2_mmx_b1hi:
   push    rbx
   push    rcx
   push    rdx
@@ -528,7 +528,7 @@ lp1hi:;
 
 
 
-_fft2_mmx_b2med
+_fft2_mmx_b2med:
   push    rbx
   push    rcx
   push    rdx
@@ -802,7 +802,7 @@ dlp1med:;
 
 
 
-_fft2_mmx_b1med
+_fft2_mmx_b1med:
   push    rbx
   push    rcx
   push    rdx
@@ -999,7 +999,7 @@ lp1med:;
   pop  rbx
   ret
 
-_fft2_mmx_b2low
+_fft2_mmx_b2low:
   push    rbx
   push    rcx
   push    rdx
@@ -1273,7 +1273,7 @@ dlp1low:;
   pop  rbx
   ret
 
-_fft2_mmx_b1low
+_fft2_mmx_b1low:
   push    rbx
   push    rcx
   push    rdx

@@ -32,12 +32,12 @@ WCC	= @MINGWBIN@ -march=i686 -D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=
 WCC64	= x86_64-w64-mingw32-gcc -D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=0
 WINWCC  = C:\mingw\bin\mingw32-gcc -march=i686 -D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=0
 WINWCC64 = C:\mingw64\mingw64\bin\x86_64-w64-mingw32-gcc -march=x86-64 -D_FILE_OFFSET_BITS=64 -DLUSERS_DEF=0 -DWUSERS_DEF=0
-NASML	= nasm -w-orphan-labels @ELF32@ -s 
-NASMW	= nasm -w-orphan-labels -fwin32 -s 
-WINNASM = C:\mingw\bin\nasm -w-orphan-labels -fwin32 -s
-NASML64	= nasm -w-orphan-labels @ELF64@ -s
-NASMW64	= nasm -w-orphan-labels -fwin64 -s 
-WINNASM64 = C:\mingw\bin\nasm -w-orphan-labels -fwin64 -s
+NASML	= nasm -w-orphan-labels -w-label-orphan @ELF32@ -s 
+NASMW	= nasm -w-orphan-labels -w-label-orphan -fwin32 -s 
+WINNASM = C:\mingw\bin\nasm -w-orphan-labels -w-label-orphan -fwin32 -s
+NASML64	= nasm -w-orphan-labels -w-label-orphan @ELF64@ -s
+NASMW64	= nasm -w-orphan-labels -w-label-orphan -fwin64 -s 
+WINNASM64 = C:\mingw\bin\nasm -w-orphan-labels -w-label-orphan -fwin64 -s
 # Use the mingw cross compiler for Windows
 # Name the output files *.ow instead of *.o
 # so we definitely know it is for Windows.

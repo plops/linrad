@@ -73,7 +73,7 @@ section .text
 
 ; Construct timf2_shi from back transforms in fft1_backbuffer
 ; Calculate timf2_pwr_int
-fft1back_mmx_finish
+fft1back_mmx_finish:
   push eax
   push ebx
   push ecx
@@ -388,7 +388,7 @@ genwin_one_loop2:
   cmp  eax,[ebp-8]
   jns  genwin_one_loop2
   jmp near finish_x
-mmx_fft1back_one
+mmx_fft1back_one:
   push eax
   push ebx
   push ecx
@@ -2445,7 +2445,7 @@ fft1back_two_x:
 ;This routine is in assembly because that was necessary in
 ;Watcom C under DOS. Maybe gnu C is ok - I have not tried.
 
-split_one
+split_one:
   push   eax
   push   ebx
   push   ecx
@@ -2549,7 +2549,7 @@ flag_zero_one:
   inc    ebp
   jmp near split_one_inc
 
-split_two
+split_two:
   push   eax
   push   ebx
   push   ecx

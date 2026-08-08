@@ -46,8 +46,8 @@ global fft2mmx_a1_win
 %define LIMIT ebp-60
 section .text
 
-fft2mmx_a1_win
-_fft2mmx_a1_win
+fft2mmx_a1_win:
+_fft2mmx_a1_win:
   push    rbx
   push    rcx
   push    rdx
@@ -219,8 +219,8 @@ win_one:
   pop  rbx
   ret
 
-fft2mmx_a1_nowin
-_fft2mmx_a1_nowin
+fft2mmx_a1_nowin:
+_fft2mmx_a1_nowin:
   push    rbx
   push    rcx
   push    rdx
@@ -348,8 +348,8 @@ nowin_one:
 
 
 
-fft2mmx_a2_nowin
-_fft2mmx_a2_nowin
+fft2mmx_a2_nowin:
+_fft2mmx_a2_nowin:
   push    rbx
   push    rcx
   push    rdx
@@ -542,8 +542,8 @@ nowin_two:
   pop  rbx
   ret
 
-fft2mmx_a2_win
-_fft2mmx_a2_win
+fft2mmx_a2_win:
+_fft2mmx_a2_win:
   push    rbx
   push    rcx
   push    rdx

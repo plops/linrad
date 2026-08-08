@@ -38,7 +38,7 @@ global _expand_rawdat
 
 section .text
 
-_compress_rawdat_disk
+_compress_rawdat_disk:
   push ebx
   push ecx
   push edx
@@ -83,7 +83,7 @@ cmpr_d:
   pop  ebx
   ret
 
-_compress_rawdat_net
+_compress_rawdat_net:
   push ebx
   push ecx
   push edx
@@ -129,7 +129,7 @@ cmpr_n:
   ret
 
 
-_expand_rawdat
+_expand_rawdat:
   push ebx
   push ecx
   push edx

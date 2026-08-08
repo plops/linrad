@@ -55,7 +55,7 @@ section .text
 
 
 
-fft2_mmx_b2hi
+fft2_mmx_b2hi:
   push    ebx
   push    ecx
   push    edx
@@ -334,7 +334,7 @@ dlp1hi:;
 
 
 
-fft2_mmx_b1hi
+fft2_mmx_b1hi:
   push    ebx
   push    ecx
   push    edx
@@ -531,7 +531,7 @@ lp1hi:;
 
 
 
-fft2_mmx_b2med
+fft2_mmx_b2med:
   push    ebx
   push    ecx
   push    edx
@@ -810,7 +810,7 @@ dlp1med:;
 
 
 
-fft2_mmx_b1med
+fft2_mmx_b1med:
   push    ebx
   push    ecx
   push    edx
@@ -1009,7 +1009,7 @@ lp1med:;
 
 
 
-fft2_mmx_b2low
+fft2_mmx_b2low:
   push    ebx
   push    ecx
   push    edx
@@ -1290,7 +1290,7 @@ dlp1low:;
 
 
 
-fft2_mmx_b1low
+fft2_mmx_b1low:
   push    ebx
   push    ecx
   push    edx

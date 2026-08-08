@@ -41,7 +41,7 @@ section .note.GNU-stack
 %define INCC ebp-24
 section .text
 
-fft2_mmx_c1
+fft2_mmx_c1:
   push    ebx
   push    ecx
   push    edx
@@ -285,7 +285,7 @@ zz:
   pop  ebx
   ret
 
-fft2_mmx_c2
+fft2_mmx_c2:
   push    ebx
   push    ecx
   push    edx

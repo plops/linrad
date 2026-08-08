@@ -62,7 +62,7 @@ section .bss
 section .text
 
 
-_simd1_16_nowin
+_simd1_16_nowin:
   push   ebp
   push   edi
   push   esi
@@ -277,7 +277,7 @@ nowin_first_16:
   pop      ebp
   ret       
 
-_simd1_16_nowin_real
+_simd1_16_nowin_real:
   push   ebp
   push   edi
   push   esi
@@ -484,7 +484,7 @@ nowin_first_16_real:
   pop      ebp
   ret       
 
-_simd1_32_nowin
+_simd1_32_nowin:
   push   ebp
   push   edi
   push   esi
@@ -673,7 +673,7 @@ movaps xmm4,xmm0
   pop      ebp
   ret       
 
-_simd1_32_nowin_real
+_simd1_32_nowin_real:
   push   ebp
   push   edi
   push   esi
@@ -863,7 +863,7 @@ movaps xmm4,xmm0
   ret       
 
 
-_simd1_16_win
+_simd1_16_win:
   push   ebp
   push   edi
   push   esi
@@ -1092,7 +1092,7 @@ win_first_16:
   pop      ebp
   ret       
 
-_simd1_16_win_real
+_simd1_16_win_real:
   push   ebp
   push   edi
   push   esi
@@ -1318,7 +1318,7 @@ win_first_16_real:
   pop      ebp
   ret       
 
-_simd1_32_win
+_simd1_32_win:
   push   ebp
   push   edi
   push   esi
@@ -1523,7 +1523,7 @@ win_first_32:
   pop      ebp
   ret       
 
-_simd1_32_win_real
+_simd1_32_win_real:
   push   ebp
   push   edi
   push   esi
@@ -1729,7 +1729,7 @@ win_first_32_real:
   ret       
 
 
-_simdbulk_of_dual_dit
+_simdbulk_of_dual_dit:
   push   ebp
   push   edi
   push   esi

@@ -34,12 +34,12 @@ WCC	= @MINGWBIN32@ -D_FILE_OFFSET_BITS=64 @LUSERHWDEF@ @WUSERHWDEF@
 WCC64	= @MINGWBIN64@ -D_FILE_OFFSET_BITS=64 @LUSERHWDEF@ @WUSERHWDEF@
 WINWCC  = C:\mingw\bin\mingw32-gcc -march=i686 -D_FILE_OFFSET_BITS=64 @LUSERHWDEF@ @WUSERHWDEF@
 WINWCC64 = C:\mingw64\mingw64\bin\x86_64-w64-mingw32-gcc -march=x86-64 -D_FILE_OFFSET_BITS=64 @LUSERHWDEF@ @WUSERHWDEF@
-NASML	= nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword @ELF32@ -s 
-NASMW	= nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -fwin32 -s 
-WINNASM = C:\mingw\bin\nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -fwin32 -s
-NASML64	= nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword @ELF64@ -s
-NASMW64	= nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -fwin64 -s 
-WINNASM64 = C:\mingw\bin\nasm -w-orphan-labels -w-reloc-rel-dword -w-reloc-abs-qword -fwin64 -s
+NASML	= nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword @ELF32@ -s 
+NASMW	= nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword -fwin32 -s 
+WINNASM = C:\mingw\bin\nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword -fwin32 -s
+NASML64	= nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword @ELF64@ -s
+NASMW64	= nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword -fwin64 -s 
+WINNASM64 = C:\mingw\bin\nasm -w-orphan-labels -w-label-orphan -w-reloc-rel-dword -w-reloc-abs-qword -fwin64 -s
 # Use the mingw cross compiler for Windows
 # Name the output files *.ow instead of *.o
 # so we definitely know it is for Windows.

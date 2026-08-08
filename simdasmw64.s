@@ -56,7 +56,7 @@ section .bss
 
 section .text
 
-_simd1_16_nowin
+_simd1_16_nowin:
   push    rbp
   push    rdi
   push    rsi
@@ -267,7 +267,7 @@ nowin_first_16:
   ret       
 
 
-_simd1_32_nowin
+_simd1_32_nowin:
   push    rbp
   push    rdi
   push    rsi
@@ -451,7 +451,7 @@ movaps xmm4,xmm0
   pop      rbp
   ret       
 
-_simd1_16_win
+_simd1_16_win:
   push    rbp
   push    rdi
   push    rsi
@@ -677,7 +677,7 @@ win_first_16:
   pop      rbp
   ret       
 
-_simd1_32_win 
+_simd1_32_win:
   push    rbp
   push    rdi
   push    rsi
@@ -877,7 +877,7 @@ win_first_32:
   pop      rbp
   ret       
 
-_simdbulk_of_dual_dit
+_simdbulk_of_dual_dit:
   push    rbp
   push    rdi
   push    rsi
